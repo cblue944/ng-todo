@@ -1,0 +1,46 @@
+@import '~foundation-sites/scss/foundation';
+
+$topbar-responsive-bg: #fff;
+$topbar-responsive-divider: #dedede;
+$topbar-color: #666;
+
+.topbar-responsive {
+  background: $topbar-responsive-bg;
+  padding: 0 1.3rem;
+  border-bottom: 1px solid $topbar-responsive-divider;
+  max-width: 40em;
+  margin: 0 auto;
+  .topbar-responsive-logo {
+    color: $topbar-color;
+    vertical-align: middle;
+    &:hover {
+      color: darken($topbar-responsive-bg, 80%);
+      border-color: darken($topbar-responsive-bg, 80%);
+    }
+  }
+  img.logo {
+    height: 3rem;
+    padding-right: 0.4rem;
+  }
+
+  .menu {
+    background: $topbar-responsive-bg;
+
+    li:last-of-type {
+      margin-right: 0;
+    }
+
+    .topbar-responsive-button {
+      color: $topbar-color;
+      border-color: $topbar-color;
+      border-radius: 5000px;
+      transition: color 0.15s ease-in, border-color 0.15s ease-in;
+      padding: 10px;
+
+      &:hover {
+        color: darken($topbar-responsive-bg, 80%);
+        border-color: darken($topbar-responsive-bg, 80%);
+      }
+    }
+  }
+}
