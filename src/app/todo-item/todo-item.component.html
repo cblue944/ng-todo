@@ -1,0 +1,13 @@
+<div [ngClass]="{done: todo.isDone}" class="todo-item" *ngIf="todo" >
+  <i class="material-icons-outlined">check</i>
+  <h2 class="todo-item--title">{{todo.title}}</h2>
+  <p class="todo-item--description">{{todo.description}}</p>
+  <div *ngIf="!hideEditing">
+    <label><ng-container i18n="@@todo-item--what">What</ng-container>:
+      <input [(ngModel)]="todo.title" placeholder="title"/>
+    </label>
+    <label><ng-container i18n="@@todo-item--how-why">How/Why</ng-container>:
+      <input [(ngModel)]="todo.description" placeholder="description"/>
+    </label>
+  </div>
+</div>

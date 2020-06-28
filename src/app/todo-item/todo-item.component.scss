@@ -1,0 +1,54 @@
+.todo-item {
+  &:hover {
+  }
+  border-bottom: 1px solid #dedede;
+  i{
+    padding-left: 2rem;
+    position: relative;
+    bottom: 0.3rem;
+  }
+  .fi-stluxl-check{
+    display: none;
+  }
+  .todo-item--title {
+    font-size: 1.6rem;
+    display: inline-block;
+    margin: 0 0.8rem;
+  }
+  &.done {
+    .fi-swluxl-square{
+      display: none;
+    }
+    .fi-stluxl-check{
+      display: inline;
+    }
+    .todo-item--title {
+      text-decoration: line-through;
+    }
+  }
+  .todo-item--description{
+    max-height: 0;
+    transition: max-height 0.1s ease;
+    overflow: hidden;
+    margin: 0;
+    padding: 0 2em;
+  }
+}
+:host-context(.todo-item-container:hover){
+  .todo-item--description {
+    display: block;
+    max-height: 10rem;
+    transition: max-height 0.8s ease;
+  }
+}
+:host-context(.cdk-drop-list-dragging) {
+  .todo-item--description {
+    display: none !important;
+  }
+}
+:host-context(.cdk-drag-preview){
+   .todo-item {
+     border-bottom: none;
+   }
+ }
+

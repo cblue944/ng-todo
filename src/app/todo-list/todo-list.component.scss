@@ -1,0 +1,97 @@
+@import '../../assets/variables.scss';
+
+.todo-list {
+  margin: 0;
+
+  .todo-item-container {
+    position: relative;
+    list-style: none;
+
+    .material-icons-outlined {
+      display: none;
+      position: absolute;
+      right: 1.5rem;
+      top: 0.25rem;
+      color: #cacaca;
+
+      &:hover {
+        color: darken(#fff, 80%);
+        border-color: darken(#fff, 80%);
+      }
+    }
+
+    &:hover {
+      .material-icons-outlined.edit {
+        display: inline;
+      }
+
+      &.done {
+        .material-icons-outlined.delete {
+          display: inline;
+        }
+
+        .material-icons-outlined.edit {
+          display: none;
+        }
+      }
+    }
+  }
+}
+#add-todo-trigger {
+  float: right;
+  clear: both;
+  margin: 0 1.4rem 0 2rem;
+  .material-icons{
+    margin-left: 0.5rem;
+    position: relative;
+    top: 6px;
+    color: $crosskey-primary;
+  }
+}
+div.cdk-drop-list-dragging div.todo-item-container:hover {
+  .material-icons-outlined {
+    display: none;
+  }
+}
+
+form {
+  margin: 0 1.4rem 0 2rem;
+}
+
+.cdk-drag-placeholder {
+  //visibility: hidden;
+  opacity: 0.3;
+}
+
+.cdk-drag-preview {
+  i.fi-xtluxl-edit-thin,
+  i.fi-stluxl-trash-thin {
+    display: none;
+  }
+}
+.button{
+  margin: 0.5rem;
+  margin-right: 0;
+}
+.button {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  &:hover {
+    color: #dedede;
+  }
+  &.success {
+    background: $crosskey-primary;
+
+    &:hover {
+      background: $crosskey-primary-hover;
+    }
+  }
+  &.alert {
+    background: $crosskey-alert;
+
+    &:hover {
+      background: $crosskey-alert-hover;
+    }
+  }
+}
