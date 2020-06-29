@@ -1,5 +1,5 @@
 <div [ngClass]="{done: todo.isDone}" class="todo-item" *ngIf="todo" >
-  <i class="material-icons-outlined">check</i>
+  <span class="checkbox"><i *ngIf="todo.isDone" class="material-icons-outlined">check</i></span>
   <h2 class="todo-item--title">{{todo.title}}</h2>
   <p class="todo-item--description">{{todo.description}}</p>
   <div *ngIf="!hideEditing">

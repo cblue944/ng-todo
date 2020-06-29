@@ -15,14 +15,13 @@
   </ng-container>
 </div>
 <span id="add-todo-trigger" *ngIf="!showCurrentTodoForm" (click)="onAddTodo()" >Add<i class="material-icons" (click)="onAddTodo()">add_box</i></span>
-<span>{{this.currentTodoModel.title}}</span>
 <div *ngIf="showCurrentTodoForm">
   <form>
   <label><ng-container i18n="@@todo-item--title">Title</ng-container>:
-    <input type="text" [(ngModel)]="currentTodoModel.title" placeholder="What to do"/>
+    <input type="text" [(ngModel)]="currentTodoModel.title" name="title" placeholder="What to do"/>
   </label>
   <label><ng-container i18n="@@todo-item--description">Description</ng-container>:
-    <textarea rows="4" [maxLength]="255" [(ngModel)]="currentTodoModel.description" placeholder="How to do"></textarea>
+    <textarea rows="4" [maxLength]="255" [(ngModel)]="currentTodoModel.description" name="description" placeholder="How to do"></textarea>
   </label>
   <button type="button" class="alert button" (click)="onCancelTodoForm()">Cancel</button>
   <button type="button" class="success button" (click)="onSaveTodo()">Save</button>

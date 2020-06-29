@@ -16,8 +16,7 @@ export class TodoListComponent implements OnInit {
 
   myTodos = MY_TODOS;
   showCurrentTodoForm = false;
-  currentTodoModel: Todo = {id: '5', title: '', description: '', isDone: false};
-  currentIndex = 3;
+  currentTodoModel: Todo = {id: '5', title: 'hejsan', description: '', isDone: false};
   configuration: Configuration = {hideCompleted: false, storeLocaly: true};
 
   constructor(private todoFirebaseService: TodosFirebaseService) {
@@ -28,6 +27,13 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.configuration.storeLocaly) {
+      this.initFirebase();
+    }
+  }
+
+  initFirebase() {
+    this.myTodos = null;
     this.todoFirebaseService.getTodos().subscribe(data => {
       this.myTodos = data.map(e => {
         return {
@@ -38,9 +44,6 @@ export class TodoListComponent implements OnInit {
         } as Todo;
       });
     });
-  }
-
-  initFirebase() {
   }
 
   onCancelTodoForm() {
@@ -72,7 +75,11 @@ export class TodoListComponent implements OnInit {
   }
 
   onDeleteTodo(todo: Todo) {
-    this.myTodos = this.myTodos.filter(t => t.id !== todo.id);
+    if (this.configuration.storeLocaly) {
+      this.todoFirebaseService.deleteTodo(todo.id);
+    } else {
+      this.myTodos = this.myTodos.filter(t => t.id !== todo.id);
+    }
   }
 
   onEditTodo(todo: Todo) {
@@ -83,8 +90,8 @@ export class TodoListComponent implements OnInit {
   }
 
   onAddTodo() {
-    this.currentTodoModel.description = '';
-    this.currentTodoModel.title = '';
+    this.currentTodoModel.description = 'Hej';
+    this.currentTodoModel.title = 'Då';
     this.showCurrentTodoForm = true;
   }
 

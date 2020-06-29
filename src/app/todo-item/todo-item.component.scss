@@ -2,14 +2,20 @@
   &:hover {
   }
   border-bottom: 1px solid #dedede;
-  i{
-    padding-left: 2rem;
+  .checkbox{
+    border: 1px solid #000;
+    border-radius: 2px;
+    margin-left: 2em;
+    height: 1.3rem;
+    width: 1.3rem;
+    display: inline-block;
     position: relative;
-    bottom: 0.3rem;
   }
-  .fi-stluxl-check{
-    display: none;
-  }
+  i{
+    position: absolute;
+    top: -12px;
+    font-size: 2rem;
+    left: -2px;  }
   .todo-item--title {
     font-size: 1.6rem;
     display: inline-block;
