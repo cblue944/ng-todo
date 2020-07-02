@@ -14,7 +14,6 @@ export class TodosFirebaseService {
   }
 
   setListId(id: string) {
-    console.log('listid:' + id);
     this.path = 'lists/' + id + '/todos';
   }
 
@@ -68,8 +67,6 @@ export class TodosFirebaseService {
   }
 
   deleteTodo(todoId: string) {
-    console.log(todoId);
-    console.log(this.path);
     this.firestore.doc(this.path + '/' + todoId).delete();
   }
 
