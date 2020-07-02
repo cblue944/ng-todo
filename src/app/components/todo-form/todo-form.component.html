@@ -1,0 +1,12 @@
+<form>
+  <label><ng-container i18n="@@todo-item--title">Title</ng-container>:
+    <input type="text" [(ngModel)]="todoModel.title" name="title" placeholder="What to do"/>
+  </label>
+  <label><ng-container i18n="@@todo-item--description">Description</ng-container>:
+    <textarea rows="4" [maxLength]="255" [(ngModel)]="todoModel.description" name="description" placeholder="How to do"></textarea>
+  </label>
+  <div class="button-group">
+    <button type="button" class="alert button" (click)="onCancelTodoForm()">Cancel</button>
+    <button type="button" class="success button" (click)="onSaveTodoForm()">Save</button>
+  </div>
+</form>
