@@ -1,0 +1,15 @@
+<nav class="top-bar topbar-responsive">
+  <div class="top-bar-title">
+    <a class="topbar-responsive-logo"  routerLink="/todos"><img alt="" class="logo" src="../../../assets/ng-todo.png"/> <strong>ng-ToDo</strong></a>
+  </div>
+    <div class="top-bar-right">
+      <ul class="menu simple vertical medium-horizontal">
+        <li *ngIf="router.url !== '/about'">
+          <a class="button hollow topbar-responsive-button" routerLink="/about" i18n="@@navigation--about">About</a>
+        </li>
+        <li *ngIf="router.url === '/about'">
+          <a class="button close hollow topbar-responsive-button" routerLink="/todos" i18n="@@navigation--about">X</a>
+        </li>
+      </ul>
+  </div>
+</nav>

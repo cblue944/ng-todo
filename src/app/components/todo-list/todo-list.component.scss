@@ -1,4 +1,4 @@
-@import '../../assets/variables.scss';
+@import '../../../assets/variables';
 
 .todo-list {
   margin: 0;
@@ -6,6 +6,7 @@
   .todo-item-container {
     position: relative;
     list-style: none;
+    cursor: default;
 
     .material-icons-outlined {
       display: none;
@@ -13,6 +14,7 @@
       right: 1.5rem;
       top: 0.25rem;
       color: #cacaca;
+      cursor: pointer;
 
       &:hover {
         color: darken(#fff, 80%);
@@ -37,16 +39,25 @@
     }
   }
 }
+.add-container {
+  margin-top: 0.6rem;
+  text-align: right;
+}
 #add-todo-trigger {
-  float: right;
-  clear: both;
-  margin: 0 1.4rem 0 2rem;
+  margin: 0.8rem 1.4rem 1.5rem 2rem;
+  cursor: pointer;
   .material-icons{
     margin-left: 0.5rem;
     position: relative;
     top: 6px;
     color: $crosskey-primary;
+    transition: color 0.15s ease-in;
   }
+  &:hover{
+    .material-icons {
+      color: $crosskey-secondary;
+      }
+    }
 }
 div.cdk-drop-list-dragging div.todo-item-container:hover {
   .material-icons-outlined {
@@ -54,9 +65,6 @@ div.cdk-drop-list-dragging div.todo-item-container:hover {
   }
 }
 
-form {
-  margin: 0 1.4rem 0 2rem;
-}
 
 .cdk-drag-placeholder {
   //visibility: hidden;
@@ -67,31 +75,5 @@ form {
   i.fi-xtluxl-edit-thin,
   i.fi-stluxl-trash-thin {
     display: none;
-  }
-}
-.button{
-  margin: 0.5rem;
-  margin-right: 0;
-}
-.button {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 1rem;
-  &:hover {
-    color: #dedede;
-  }
-  &.success {
-    background: $crosskey-primary;
-
-    &:hover {
-      background: $crosskey-primary-hover;
-    }
-  }
-  &.alert {
-    background: $crosskey-alert;
-
-    &:hover {
-      background: $crosskey-alert-hover;
-    }
   }
 }

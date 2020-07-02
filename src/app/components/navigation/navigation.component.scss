@@ -1,4 +1,5 @@
-@import '~foundation-sites/scss/foundation';
+@import '../../../../node_modules/foundation-sites/scss/foundation';
+@import '../../../assets/variables';
 
 $topbar-responsive-bg: #fff;
 $topbar-responsive-divider: #dedede;
@@ -10,14 +11,21 @@ $topbar-color: #666;
   border-bottom: 1px solid $topbar-responsive-divider;
   max-width: 40em;
   margin: 0 auto;
+
   .topbar-responsive-logo {
     color: $topbar-color;
     vertical-align: middle;
+
     &:hover {
       color: darken($topbar-responsive-bg, 80%);
       border-color: darken($topbar-responsive-bg, 80%);
     }
   }
+
+  .top-bar-right {
+    flex: none;
+  }
+
   img.logo {
     height: 3rem;
     padding-right: 0.4rem;
@@ -33,13 +41,16 @@ $topbar-color: #666;
     .topbar-responsive-button {
       color: $topbar-color;
       border-color: $topbar-color;
-      border-radius: 5000px;
+      border-radius: 50px;
       transition: color 0.15s ease-in, border-color 0.15s ease-in;
       padding: 10px;
+      min-width: 2.25rem;
+      border-color: $crosskey-secondary-hover;
+      color: $crosskey-secondary-hover;
 
       &:hover {
-        color: darken($topbar-responsive-bg, 80%);
-        border-color: darken($topbar-responsive-bg, 80%);
+        border-color: $crosskey-secondary;
+        color: $crosskey-secondary;
       }
     }
   }

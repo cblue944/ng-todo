@@ -1,22 +1,31 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Todo} from '../interfaces/todo';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodosFirebaseService {
+
+  private path;
+
   constructor(private firestore: AngularFirestore) {
   }
 
+  setListId(id: string) {
+    console.log('listid:' + id);
+    this.path = 'lists/' + id + '/todos';
+  }
+
   getTodos() {
-    return this.firestore.collection('todos').snapshotChanges();
+    return this.firestore.collection(this.path).snapshotChanges();
   }
 
   createTodo(todo: Todo) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection('todos')
+        .collection(this.path)
         .add({
           title: todo.title,
           description: todo.description,
@@ -27,12 +36,41 @@ export class TodosFirebaseService {
     });
   }
 
+  createTodoIfNew(todo: Todo) {
+    return this.firestore.doc(this.path + '/' + todo.id).get().toPromise()
+      .then(docSnapshot => {
+        if (!docSnapshot.exists) {
+          return this.createTodo(todo);
+        }
+      });
+  }
+
+  createNewList() {
+    return new Promise<any>((resolve, reject) => {
+      this.firestore
+        .collection('lists')
+        .add({
+          todos: [] as Todo[]
+        })
+        .then(res => {
+          this.setListId(res.id);
+          resolve(res.id);
+        }, err => reject(err));
+    });
+  }
+
   updateTodo(todo: Todo) {
-    delete todo.id;
-    this.firestore.doc('todos/' + todo.id).update(todo);
+    return new Promise<any>((resolve, reject) => {
+      this.firestore.collection(this.path).doc(todo.id).set(todo, {merge: true})
+        .then(res => {
+        }, err => reject(err));
+    });
   }
 
   deleteTodo(todoId: string) {
-    this.firestore.doc('todos/' + todoId).delete();
+    console.log(todoId);
+    console.log(this.path);
+    this.firestore.doc(this.path + '/' + todoId).delete();
   }
+
 }

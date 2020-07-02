@@ -1,0 +1,27 @@
+<div id="configuration-bar">
+  <div id="configuration-form" *ngIf="showConfiguration">
+    <label>
+        <input type="checkbox" [checked]="configuration.hideCompleted"
+               (change)="onHideCompletedChange()"/>
+      <ng-container i18n="@@configuration-bar--hide-done">
+        Hide completed tasks
+      </ng-container>
+    </label>
+    <label>
+      <input type="checkbox" [checked]="configuration.storeInCloud"
+             (change)="onCloudStorageChange()"/>
+      <ng-container i18n="@@configuration-bar--store-in-cloud">
+        Store in the cloud
+      </ng-container>
+    </label>
+    <label>
+      <input type="checkbox" [checked]="configuration.allowDelete"
+             (change)="onAllowDeleteChange()"/>
+      <ng-container i18n="@@configuration-bar--allow-delete">
+        Enable delete of tasks
+      </ng-container>
+    </label>
+    <p i18n="@@configuration-bar--share-list" *ngIf="configuration.storeInCloud" class="share-link">With this <a href="{{'/todos#' + configuration.listId}}">link</a> you can share your todo list.</p>
+  </div>
+  <i i18n="@@configuration-bar--settings" [ngClass]="{'material-icons': showConfiguration, 'open material-icons-outlined': !showConfiguration}" (click)="showConfiguration = !showConfiguration">settings</i>
+</div>

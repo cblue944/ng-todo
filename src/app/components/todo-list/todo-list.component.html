@@ -1,0 +1,23 @@
+  <div class="todo-list"
+     cdkDropList
+     (cdkDropListDropped)="onDrop($event)">
+  <ng-container *ngFor="let todo of myTodos">
+  <div class="todo-item-container"
+       cdkDrag
+       [ngClass]="{done: todo.isDone}"
+       *ngIf="!configuration.hideCompleted || !todo.isDone">
+    <app-todo-item
+      (click)="onToggleDone(todo)"
+      [todo]="todo"></app-todo-item>
+    <i *ngIf="configuration.allowDelete" class="material-icons-outlined delete" (click)="onDeleteTodo(todo)">delete</i>
+    <i class="material-icons-outlined edit" (click)="onEditTodo(todo)">edit</i>
+  </div>
+  </ng-container>
+</div>
+<div class="add-container">
+  <span id="add-todo-trigger" *ngIf="!showCurrentTodoForm" (click)="onAddTodo()" >Add<i class="material-icons" (click)="onAddTodo()">add_box</i></span>
+</div>
+<div *ngIf="showCurrentTodoForm">
+  <app-todo-form (cancel)="onCancelTodoForm()" (save)="onSaveTodo($event)" [todoModel]="currentTodoModel"></app-todo-form>
+</div>
+<app-configurations-bar [configuration]="configuration" (configurationChange)="onConfigurationChange($event)"></app-configurations-bar>

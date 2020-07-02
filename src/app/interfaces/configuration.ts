@@ -1,4 +1,6 @@
 export interface Configuration {
   hideCompleted: boolean;
-  storeLocaly: boolean;
+  storeInCloud: boolean;
+  allowDelete: boolean;
+  listId: string;
 }

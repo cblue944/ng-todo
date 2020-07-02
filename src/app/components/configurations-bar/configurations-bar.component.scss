@@ -1,0 +1,38 @@
+@import '../../../assets/variables';
+
+i{
+  position: absolute;
+  right: 1.4rem;
+  top: 0;
+  cursor: pointer;
+  color: #3b3b3b;
+  &:hover{
+    color: #000;
+  }
+}
+div{
+  margin-top: 1rem;
+}
+#configuration-form{
+  margin-left: 0.6rem;
+  display: flex;
+  flex-flow: wrap;
+  label {
+    flex: none;
+    margin-left:1.5rem;
+  }
+  margin-right: 3rem;
+}
+#configuration-bar{
+  position: relative;
+}
+label{
+  display: block;
+}
+p{
+  margin-left: 1.4rem;
+  a{
+    color: $crosskey-primary;
+  }
+}
+
